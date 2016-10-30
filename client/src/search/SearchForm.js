@@ -10,6 +10,7 @@ export default class SearchForm  extends Component {
         this.state = {query: '', data: []};
         this.handleQueryChange = this.handleQueryChange.bind(this)
         this.doSearch = this.doSearch.bind(this)
+        this.submitQuery = this.submitQuery.bind(this)
     }
 
     doSearch() {
@@ -22,9 +23,16 @@ export default class SearchForm  extends Component {
     handleQueryChange(e) {
         e.preventDefault();
         this.setState(
-            { query: e.target.value},
-            () => { if (this.state.query) {this.doSearch();}}
+            {query: e.target.value}
+            //() => { if (this.state.query) {this.doSearch();}}
         );
+    }
+
+    submitQuery(e) {
+        e.preventDefault();
+        if (this.state.query) {
+            this.doSearch();
+        }
     }
 
     render() {
@@ -36,6 +44,7 @@ export default class SearchForm  extends Component {
                     placeholder="type a word"
                     value={this.state.query}
                     onChange={this.handleQueryChange}
+                    onBlur={this.submitQuery}
                 />
                 <SearchResults data={this.state.data} />
             </div>
