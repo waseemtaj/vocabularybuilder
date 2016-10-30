@@ -1,0 +1,10 @@
+{
+  "name": "vocubularybuilder-server",
+  "proxy": "http://localhost:9000/",
+  "dependencies": {
+    "foreman": "2.0.0"
+  },
+  "scripts": {
+    "start": "nf start -p 3000"
+  }
+}
